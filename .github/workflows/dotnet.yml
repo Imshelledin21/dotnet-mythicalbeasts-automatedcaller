@@ -21,10 +21,10 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore .\mythicalbeasts-automator\mythicalbeasts-automator.sln
+      run: dotnet restore ./mythicalbeasts-automator/mythicalbeasts-automator.sln
     - name: Build
-      run: dotnet build .\mythicalbeasts-automator\mythicalbeasts-automator.sln --no-restore
+      run: dotnet build ./mythicalbeasts-automator/mythicalbeasts-automator.sln --no-restore
     - name: Test
-      run: dotnet test .\mythicalbeasts-automator\mythicalbeasts-automator.sln --no-build --verbosity normal
+      run: dotnet test ./mythicalbeasts-automator/mythicalbeasts-automator.sln --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish .\mythicalbeasts-automator\mythicalbeasts-automator.sln /p:PublishProfile=DefaultContainer
+      run: dotnet publish ./mythicalbeasts-automator/mythicalbeasts-automator.sln /p:PublishProfile=DefaultContainer
