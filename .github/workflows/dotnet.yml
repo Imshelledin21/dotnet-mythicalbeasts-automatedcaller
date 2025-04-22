@@ -28,3 +28,5 @@ jobs:
       run: dotnet test ./mythicalbeasts-automator/mythicalbeasts-automator.sln --no-build --verbosity normal
     - name: Publish
       run: dotnet publish ./mythicalbeasts-automator/mythicalbeasts-automator.sln /p:PublishProfile=DefaultContainer
+    - name: Build Docker Image
+      run: docker build . -t imshelledin21/mythicalbeasts-automator:latest -t imshelledin21/mythicalbeasts-automator:v0.0.1
