@@ -5,9 +5,10 @@ internal class Program
     private static void Main(string[] args)
     {
 
-        var baseUrl = "http://mythicalbeast.mythics.svc.cluster.local";
+        var baseUrl = Environment.GetEnvironmentVariable("BASE_API_ENDPOINT");
         List<string> endpoints = new([
-            "/mythicalbeasts"
+            "/mythicalbeasts",
+            "/random"
         ]);
 
         Console.WriteLine("Hello, World!");
@@ -15,9 +16,19 @@ internal class Program
 
         while (true)
         {
-            Console.WriteLine(baseUrl + endpoints[0]);
+            var endpointCount = endpoints.Count;
+            var rand = new Random();
+            rand.Next(0, endpointCount - 1);
 
-            Thread.Sleep(1000);
+            var endpoint = baseUrl + endpoints[endpointCount];
+
+            var http = new HttpClient();
+            http.GetAsync(endpoint).Wait();
+
+            var sleepTimer = new Random();
+            var sleepFor = sleepTimer.Next(0, 2000);
+
+            Thread.Sleep(sleepFor);
         }
     }
 }
