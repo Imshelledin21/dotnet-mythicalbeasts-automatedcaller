@@ -18,9 +18,9 @@ internal class Program
         {
             var endpointCount = endpoints.Count;
             var rand = new Random();
-            rand.Next(0, endpointCount - 1);
+            var num = rand.Next(0, endpointCount - 1);
 
-            var endpoint = baseUrl + endpoints[endpointCount];
+            var endpoint = baseUrl + endpoints[num];
 
             var http = new HttpClient();
             http.GetAsync(endpoint).Wait();
