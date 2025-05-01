@@ -12,6 +12,7 @@ internal class Program
         ]);
 
         Console.WriteLine("Hello, World!");
+        Console.WriteLine("Let's query for some Mythical Beasts!");
 
 
         while (true)
@@ -22,11 +23,15 @@ internal class Program
 
             var endpoint = baseUrl + endpoints[num];
 
+            Console.WriteLine("Sending request to: " + endpoint);
+
             var http = new HttpClient();
             http.GetAsync(endpoint).Wait();
 
             var sleepTimer = new Random();
             var sleepFor = sleepTimer.Next(0, 2000);
+
+            Console.WriteLine("Sleeping for " + sleepFor + "ms");
 
             Thread.Sleep(sleepFor);
         }
